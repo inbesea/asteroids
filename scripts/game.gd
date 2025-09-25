@@ -4,10 +4,13 @@ extends Node2D
 @onready var player = $Player
 @onready var asteroids = $asteroids
 
+var score = 0
+
 var asteroid_scene = preload("res://scenes/asteroid.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	score = 0
 	player.connect("laser_shot", _on_player_laser_shot)
 	
 	for asteroid in asteroids.get_children():
@@ -20,7 +23,8 @@ func _process(delta: float) -> void:
 func _on_player_laser_shot(laser):
 	lasers.add_child(laser)
 
-func _on_asteroid_exploded(pos, size):
+func _on_asteroid_exploded(pos, size, points):
+	score += points
 	for i in range(2):
 		match size:
 			Asteroid.AsteroidSize.LARGE:
@@ -29,6 +33,7 @@ func _on_asteroid_exploded(pos, size):
 				create_new_asteroid(pos, Asteroid.AsteroidSize.SMALL)
 			Asteroid.AsteroidSize.SMALL:
 				pass
+	print(score)
 	
 func create_new_asteroid(pos, size):
 	var a = asteroid_scene.instantiate()
