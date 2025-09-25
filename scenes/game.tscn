@@ -12,5 +12,16 @@ position = Vector2(622, 354)
 
 [node name="lasers" type="Node" parent="."]
 
-[node name="asteroid" parent="." instance=ExtResource("3_lnu2h")]
+[node name="asteroids" type="Node" parent="."]
+
+[node name="asteroid" parent="asteroids" instance=ExtResource("3_lnu2h")]
 position = Vector2(269, 214)
+
+[node name="asteroid2" parent="asteroids" instance=ExtResource("3_lnu2h")]
+position = Vector2(221, 563)
+
+[node name="asteroid3" parent="asteroids" instance=ExtResource("3_lnu2h")]
+position = Vector2(809, 281)
+
+[node name="asteroid4" parent="asteroids" instance=ExtResource("3_lnu2h")]
+position = Vector2(1076, 491)

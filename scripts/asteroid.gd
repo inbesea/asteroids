@@ -1,11 +1,51 @@
-extends Area2D
+class_name Asteroid extends Area2D
+
+signal exploded(pos, size)
 
 var speed := 50
 
 var movement_vector := Vector2(0,-1)
 
+enum AsteroidSize{LARGE, MEDIUM, SMALL}
+@export var size := AsteroidSize.LARGE
+
+@onready var sprite = $Sprite2D
+@onready var cshape = $CollisionShape2D
+
 func _ready() -> void:
 	rotation = randf_range(0, 2*PI)
+	
+	match size:
+		AsteroidSize.LARGE:
+			speed = randf_range(50, 100)
+			sprite.texture = preload("res://assets/asteroid.png")
+			cshape.shape = preload("res://resources/asteroid_cshape_large.tres")
+		AsteroidSize.MEDIUM:
+			speed = randf_range(100, 150)
+			sprite.texture = preload("res://assets/asteroidmedium.png")
+			cshape.shape = preload("res://resources/asteroid_cshape_medium.tres")
+		AsteroidSize.SMALL:
+			speed = randf_range(100, 200)
+			sprite.texture = preload("res://assets/asteroidsmall.png")
+			cshape.shape = preload("res://resources/asteroid_cshape_small.tres")
 
 func _physics_process(delta: float) -> void:
 	global_position += movement_vector.rotated(rotation) * delta * speed
+	
+	var screen_size = get_viewport_rect().size
+	var width = cshape.shape.get_rect().size.x/2
+	var hight = cshape.shape.get_rect().size.y/2
+	
+	if global_position.y + hight < 0:
+		global_position.y = screen_size.y + hight
+	if global_position.y - hight > screen_size.y:
+		global_position.y = 0 - hight
+	if global_position.x + width < 0:
+		global_position.x = screen_size.x + width
+	if global_position.x - width > screen_size.x:
+		global_position.x = 0 - width
+		
+func explode():
+	emit_signal("exploded", global_position, size)
+	queue_free()
+	pass

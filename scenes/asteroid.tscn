@@ -1,20 +1,19 @@
 [gd_scene load_steps=4 format=3 uid="uid://cbq00bdyi6rw6"]
 
 [ext_resource type="Script" uid="uid://cvh0pn7cd6ju2" path="res://scripts/asteroid.gd" id="1_6mo6b"]
-[ext_resource type="Texture2D" uid="uid://srqxk0k5mwg5" path="res://assets/asteroid.png" id="1_akfqu"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6mo6b"]
-radius = 40.291924
-height = 109.322685
+[ext_resource type="Texture2D" uid="uid://dnkyukutxwwgx" path="res://assets/asteroidsmall.png" id="2_t4se3"]
+[ext_resource type="Shape2D" uid="uid://c1c2fskpc3cmi" path="res://resources/asteroid_cshape_small.tres" id="3_pnq5b"]
 
 [node name="asteroid" type="Area2D"]
+collision_layer = 4
+collision_mask = 11
 script = ExtResource("1_6mo6b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("1_akfqu")
+texture = ExtResource("2_t4se3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 2)
-rotation = -0.67522824
-shape = SubResource("CapsuleShape2D_6mo6b")
+position = Vector2(4.7683716e-07, 0)
+rotation = 1.5707964
+shape = ExtResource("3_pnq5b")
