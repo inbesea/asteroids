@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dy0hbktd4kxyo"]
+
+[ext_resource type="Texture2D" uid="uid://bwse5ebugiyko" path="res://assets/textures/spaceship?.png" id="1_fjxat"]
+
+[node name="UILife" type="TextureRect"]
+texture_filter = 1
+offset_right = 66.0
+offset_bottom = 66.0
+texture = ExtResource("1_fjxat")
+expand_mode = 2

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8hnht65pymml"
-path="res://.godot/imported/laser.png-af9ca9427a51d96a36a733a4aa4be8b2.ctex"
+uid="uid://dnkyukutxwwgx"
+path="res://.godot/imported/asteroidsmall.png-ac2d8bfecf640ba1aeb2b455dfa14d69.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/laser.png"
-dest_files=["res://.godot/imported/laser.png-af9ca9427a51d96a36a733a4aa4be8b2.ctex"]
+source_file="res://assets/textures/asteroidsmall.png"
+dest_files=["res://.godot/imported/asteroidsmall.png-ac2d8bfecf640ba1aeb2b455dfa14d69.ctex"]
 
 [params]
 
