@@ -3,7 +3,8 @@ extends Node2D
 @onready var lasers = $lasers
 @onready var player = $Player
 @onready var asteroids = $asteroids
-@onready var hud = $HUD
+@onready var hud = $UI/HUD
+@onready var game_over_screen = $UI/GameOverScreen
 @onready var player_spawn_pos = $playerRespawnPos
 
 var score = 0:
@@ -20,6 +21,7 @@ var asteroid_scene = preload("res://scenes/asteroid.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	game_over_screen.visible = false	
 	score = 0
 	lives = 3
 	player.connect("laser_shot", _on_player_laser_shot)
@@ -56,9 +58,9 @@ func create_new_asteroid(pos, size):
 
 func _on_player_died():
 	lives -= 1
-	print(lives)
-	if lives < 1:
-		get_tree().reload_current_scene()
+	if lives < 1:      
+		await get_tree().create_timer(2).timeout
+		game_over_screen.visible = true	
 	else:
 		await get_tree().create_timer(1).timeout
 		player.respawn(player_spawn_pos.global_position)
