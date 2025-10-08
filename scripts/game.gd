@@ -6,6 +6,7 @@ extends Node2D
 @onready var hud = $UI/HUD
 @onready var game_over_screen = $UI/GameOverScreen
 @onready var player_spawn_pos = $playerRespawnPos
+@onready var player_spawn_area = $playerRespawnPos/PlayerSpawnArea
 
 var score = 0:
 	set (value):
@@ -63,4 +64,6 @@ func _on_player_died():
 		game_over_screen.visible = true	
 	else:
 		await get_tree().create_timer(1).timeout
+		while !player_spawn_area.isEmpty:
+			await  get_tree().create_timer(0.1).timeout
 		player.respawn(player_spawn_pos.global_position)

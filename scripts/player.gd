@@ -1,4 +1,3 @@
-
 class_name Player extends CharacterBody2D
 
 signal	laser_shot(laser)

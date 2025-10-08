@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cyrekv3jr8uvy"]
+[gd_scene load_steps=7 format=3 uid="uid://cyrekv3jr8uvy"]
 
 [ext_resource type="PackedScene" uid="uid://dgmlwc1vg4q2p" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://dadhgykyg5cu8" path="res://scripts/game.gd" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://cvrrscinjhva6" path="res://scenes/hud.tscn" id="2_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://532e4v208v2a" path="res://game_over_screen.tscn" id="3_iywne"]
 [ext_resource type="PackedScene" uid="uid://cbq00bdyi6rw6" path="res://scenes/asteroid.tscn" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://dc5whl0neh1nh" path="res://scenes/player_spawn_area.tscn" id="6_p57ef"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_yqjtg")
@@ -36,3 +37,5 @@ position = Vector2(1076, 491)
 
 [node name="playerRespawnPos" type="Node2D" parent="."]
 position = Vector2(622, 377)
+
+[node name="PlayerSpawnArea" parent="playerRespawnPos" instance=ExtResource("6_p57ef")]
