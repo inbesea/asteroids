@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cyrekv3jr8uvy"]
+[gd_scene load_steps=10 format=3 uid="uid://cyrekv3jr8uvy"]
 
 [ext_resource type="PackedScene" uid="uid://dgmlwc1vg4q2p" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://dadhgykyg5cu8" path="res://scripts/game.gd" id="1_yqjtg"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://532e4v208v2a" path="res://game_over_screen.tscn" id="3_iywne"]
 [ext_resource type="PackedScene" uid="uid://cbq00bdyi6rw6" path="res://scenes/asteroid.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://dc5whl0neh1nh" path="res://scenes/player_spawn_area.tscn" id="6_p57ef"]
+[ext_resource type="AudioStream" uid="uid://ckrag1vcw1jpy" path="res://assets/sounds/lazerEffect01.wav" id="7_u5sy4"]
+[ext_resource type="AudioStream" uid="uid://cbugn7tf6htas" path="res://assets/sounds/asteroidHitEffect01.wav" id="8_gee14"]
+[ext_resource type="AudioStream" uid="uid://cpxawy1o5o6ri" path="res://assets/sounds/playerExplodeSound01.wav" id="9_0tnpc"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_yqjtg")
@@ -25,17 +28,30 @@ position = Vector2(622, 377)
 
 [node name="asteroid" parent="asteroids" instance=ExtResource("3_lnu2h")]
 position = Vector2(269, 214)
+size = 0
 
 [node name="asteroid2" parent="asteroids" instance=ExtResource("3_lnu2h")]
 position = Vector2(221, 563)
+size = 0
 
 [node name="asteroid3" parent="asteroids" instance=ExtResource("3_lnu2h")]
 position = Vector2(809, 281)
+size = 0
 
 [node name="asteroid4" parent="asteroids" instance=ExtResource("3_lnu2h")]
 position = Vector2(1076, 491)
+size = 0
 
 [node name="playerRespawnPos" type="Node2D" parent="."]
 position = Vector2(622, 377)
 
 [node name="PlayerSpawnArea" parent="playerRespawnPos" instance=ExtResource("6_p57ef")]
+
+[node name="LazerSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_u5sy4")
+
+[node name="AsteroidHitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_gee14")
+
+[node name="PlayerDieSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_0tnpc")
